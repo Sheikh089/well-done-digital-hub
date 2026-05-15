@@ -121,25 +121,27 @@ function HomePage() {
 
       {/* Services grid */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-2xl">
+        <div className="reveal mb-12 max-w-2xl" data-reveal>
           <p className="text-sm font-semibold uppercase tracking-wider text-teal">Nos expertises</p>
           <h2 className="mt-2 font-heading text-3xl font-bold sm:text-4xl">
             Tout ce dont vous avez besoin pour réussir votre transformation digitale.
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
+          {services.map((s, i) => (
             <Link
               key={s.title}
               to={s.to}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-teal/40 hover:shadow-elegant"
+              data-reveal
+              style={{ animationDelay: `${i * 0.12}s` }}
+              className="reveal group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-teal/40 hover:shadow-elegant"
             >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-gradient text-deep">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-gradient text-deep transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
                 <s.icon size={22} />
               </div>
               <h3 className="mt-5 font-heading text-lg font-semibold">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-              <div className="mt-4 flex items-center gap-1 text-sm font-medium text-teal opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="mt-4 flex items-center gap-1 text-sm font-medium text-teal opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">
                 En savoir plus <ArrowRight size={14} />
               </div>
             </Link>
