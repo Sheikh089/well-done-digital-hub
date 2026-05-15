@@ -27,15 +27,15 @@ export function SiteFooter() {
         <div>
           <h4 className="font-heading text-sm font-semibold uppercase tracking-wider text-mint">Contact</h4>
           <ul className="mt-4 space-y-3 text-sm text-deep-foreground/80">
-            <li className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0" /> Dakar, Sénégal</li>
-            <li className="flex items-start gap-2"><Mail size={16} className="mt-0.5 shrink-0" /> contact@welldonescompany.com</li>
-            <li className="flex items-start gap-2"><Phone size={16} className="mt-0.5 shrink-0" /> +221 XX XXX XX XX</li>
+            <li className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0" /><span>Dakar, Sénégal</span></li>
+            <li className="flex items-start gap-2"><Mail size={16} className="mt-0.5 shrink-0" /><span>contact@welldonescompany.com</span></li>
+            <li className="flex items-start gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><span>+221 XX XXX XX XX</span></li>
           </ul>
         </div>
       </div>
       <div className="border-t border-deep-foreground/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-deep-foreground/60 sm:flex-row sm:px-6 lg:px-8">
-          <p>© {new Date().getFullYear()} Well Done Services Company SARL. Tous droits réservés.</p>
+          <p>© 2026 Well Done Services Company SARL. Tous droits réservés.</p>
           <p>Sénégal · Afrique de l'Ouest</p>
         </div>
       </div>
