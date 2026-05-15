@@ -184,9 +184,12 @@ function HomePage() {
         </div>
       </section>
 
+      {/* CEO / Administrateur Général */}
+      <CeoSection />
+
       {/* Testimonial */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-border bg-card p-10 shadow-card md:p-14">
+        <div className="reveal-scale rounded-3xl border border-border bg-card p-10 shadow-card md:p-14" data-reveal>
           <Quote className="text-teal" size={36} />
           <blockquote className="mt-6 font-heading text-2xl leading-relaxed sm:text-3xl">
             "Well Done a transformé notre gestion scolaire. La plateforme est intuitive,
