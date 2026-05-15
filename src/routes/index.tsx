@@ -228,19 +228,25 @@ function HomePage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-hero-gradient text-deep-foreground">
-        <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl">
-            Prêt à digitaliser votre activité ?
+        <div
+          className="animate-blob pointer-events-none absolute -top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full opacity-25 blur-3xl"
+          style={{ background: "var(--gradient-accent)" }}
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
+          <h2 className="reveal font-heading text-3xl font-bold sm:text-4xl" data-reveal>
+            Prêt à digitaliser votre <span className="shimmer-text">activité</span> ?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-deep-foreground/80">
+          <p className="reveal mx-auto mt-4 max-w-2xl text-lg text-deep-foreground/80" data-reveal>
             Parlons de votre projet. Nous vous proposons une approche claire,
             un devis transparent et une équipe dédiée.
           </p>
           <Link
             to="/contact"
-            className="mt-10 inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-8 py-4 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
+            className="reveal-scale group mt-10 inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-8 py-4 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
+            data-reveal
           >
-            Démarrer mon projet <ArrowRight size={18} />
+            Démarrer mon projet <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
