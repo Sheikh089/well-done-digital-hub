@@ -212,8 +212,13 @@ function HomePage() {
             Ils nous font confiance
           </p>
           <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-6">
-            {partners.map((p) => (
-              <div key={p} className="grid h-16 place-items-center rounded-lg border border-border bg-card text-sm font-semibold text-muted-foreground">
+            {partners.map((p, i) => (
+              <div
+                key={p}
+                data-reveal
+                style={{ animationDelay: `${i * 0.06}s` }}
+                className="reveal-scale grid h-16 place-items-center rounded-lg border border-border bg-card text-sm font-semibold text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-teal/50 hover:text-foreground"
+              >
                 {p}
               </div>
             ))}
