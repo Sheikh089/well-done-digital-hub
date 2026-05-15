@@ -152,7 +152,7 @@ function HomePage() {
       {/* Value prop */}
       <section className="bg-muted/40">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div>
+          <div className="reveal-left" data-reveal>
             <p className="text-sm font-semibold uppercase tracking-wider text-teal">Pourquoi nous choisir</p>
             <h2 className="mt-2 font-heading text-3xl font-bold sm:text-4xl">
               Une équipe locale, un standard international.
@@ -169,9 +169,14 @@ function HomePage() {
               "Maintenance et support inclus dans chaque projet",
               "Tarification claire, sans surprise",
               "Formation et transfert de compétences",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4 shadow-card">
-                <CheckCircle2 className="mt-0.5 shrink-0 text-teal" size={20} />
+            ].map((item, i) => (
+              <li
+                key={item}
+                data-reveal
+                style={{ animationDelay: `${i * 0.08}s` }}
+                className="reveal-right group flex items-start gap-3 rounded-lg border border-border bg-card p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-teal/40"
+              >
+                <CheckCircle2 className="mt-0.5 shrink-0 text-teal transition-transform group-hover:scale-110" size={20} />
                 <span className="text-sm font-medium">{item}</span>
               </li>
             ))}
