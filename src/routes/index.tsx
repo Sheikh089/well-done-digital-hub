@@ -105,8 +105,13 @@ function HomePage() {
       {/* Stats */}
       <section className="border-y border-border bg-muted/40">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className="reveal-scale text-center"
+              data-reveal
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
               <div className="font-heading text-4xl font-bold text-gradient">{s.value}</div>
               <div className="mt-2 text-sm font-medium text-muted-foreground">{s.label}</div>
             </div>
