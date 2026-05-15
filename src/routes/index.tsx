@@ -49,24 +49,47 @@ function HomePage() {
           height={1280}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-screen"
         />
+        {/* Animated decorative blobs */}
+        <div
+          className="animate-blob pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full opacity-30 blur-3xl"
+          style={{ background: "var(--gradient-accent)" }}
+          aria-hidden
+        />
+        <div
+          className="animate-blob pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full opacity-20 blur-3xl"
+          style={{ background: "var(--gradient-accent)", animationDelay: "3s" }}
+          aria-hidden
+        />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 text-xs font-medium text-mint">
-              <Sparkles size={14} /> Acteur de la transformation digitale au Sénégal
+            <span
+              className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 text-xs font-medium text-mint"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <Sparkles size={14} className="animate-pulse" /> Acteur de la transformation digitale au Sénégal
             </span>
-            <h1 className="mt-6 font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Des solutions <span className="text-gradient">IT & digitales</span> qui propulsent votre entreprise.
+            <h1
+              className="animate-fade-in-up mt-6 font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+              style={{ animationDelay: "0.25s" }}
+            >
+              Des solutions <span className="shimmer-text">IT &amp; digitales</span> qui propulsent votre entreprise.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-deep-foreground/80">
+            <p
+              className="animate-fade-in-up mt-6 max-w-2xl text-lg text-deep-foreground/80"
+              style={{ animationDelay: "0.4s" }}
+            >
               Well Done Services Company conçoit, développe et maintient les outils numériques
               dont les PME, écoles, ONG et administrations ont besoin pour grandir.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div
+              className="animate-fade-in-up mt-10 flex flex-wrap gap-4"
+              style={{ animationDelay: "0.55s" }}
+            >
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-6 py-3 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-6 py-3 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
               >
-                Demander un devis <ArrowRight size={18} />
+                Demander un devis <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/services"
