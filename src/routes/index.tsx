@@ -3,6 +3,8 @@ import { ArrowRight, Code2, Database, Network, GraduationCap, CheckCircle2, Spar
 import heroBg from "@/assets/hero-bg.jpg";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { CeoSection } from "@/components/CeoSection";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
