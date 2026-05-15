@@ -35,8 +35,9 @@ const stats = [
 const partners = ["MEN Sénégal", "École Yavuz", "PME Dakar", "Startup Hub", "ONG Partenaire", "Cabinet Conseil"];
 
 function HomePage() {
+  const revealRef = useReveal<HTMLDivElement>();
   return (
-    <div className="min-h-screen bg-background">
+    <div ref={revealRef} className="min-h-screen bg-background">
       <SiteHeader />
 
       {/* Hero */}
