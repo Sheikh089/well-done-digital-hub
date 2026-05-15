@@ -3,6 +3,8 @@ import { ArrowRight, Code2, Database, Network, GraduationCap, CheckCircle2, Spar
 import heroBg from "@/assets/hero-bg.jpg";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { CeoSection } from "@/components/CeoSection";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,8 +35,9 @@ const stats = [
 const partners = ["MEN Sénégal", "École Yavuz", "PME Dakar", "Startup Hub", "ONG Partenaire", "Cabinet Conseil"];
 
 function HomePage() {
+  const revealRef = useReveal<HTMLDivElement>();
   return (
-    <div className="min-h-screen bg-background">
+    <div ref={revealRef} className="min-h-screen bg-background">
       <SiteHeader />
 
       {/* Hero */}
@@ -46,24 +49,47 @@ function HomePage() {
           height={1280}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-screen"
         />
+        {/* Animated decorative blobs */}
+        <div
+          className="animate-blob pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full opacity-30 blur-3xl"
+          style={{ background: "var(--gradient-accent)" }}
+          aria-hidden
+        />
+        <div
+          className="animate-blob pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full opacity-20 blur-3xl"
+          style={{ background: "var(--gradient-accent)", animationDelay: "3s" }}
+          aria-hidden
+        />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 text-xs font-medium text-mint">
-              <Sparkles size={14} /> Acteur de la transformation digitale au Sénégal
+            <span
+              className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 text-xs font-medium text-mint"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <Sparkles size={14} className="animate-pulse" /> Acteur de la transformation digitale au Sénégal
             </span>
-            <h1 className="mt-6 font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Des solutions <span className="text-gradient">IT & digitales</span> qui propulsent votre entreprise.
+            <h1
+              className="animate-fade-in-up mt-6 font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+              style={{ animationDelay: "0.25s" }}
+            >
+              Des solutions <span className="shimmer-text">IT &amp; digitales</span> qui propulsent votre entreprise.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-deep-foreground/80">
+            <p
+              className="animate-fade-in-up mt-6 max-w-2xl text-lg text-deep-foreground/80"
+              style={{ animationDelay: "0.4s" }}
+            >
               Well Done Services Company conçoit, développe et maintient les outils numériques
               dont les PME, écoles, ONG et administrations ont besoin pour grandir.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div
+              className="animate-fade-in-up mt-10 flex flex-wrap gap-4"
+              style={{ animationDelay: "0.55s" }}
+            >
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-6 py-3 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-6 py-3 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
               >
-                Demander un devis <ArrowRight size={18} />
+                Demander un devis <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/services"
@@ -79,8 +105,13 @@ function HomePage() {
       {/* Stats */}
       <section className="border-y border-border bg-muted/40">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className="reveal-scale text-center"
+              data-reveal
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
               <div className="font-heading text-4xl font-bold text-gradient">{s.value}</div>
               <div className="mt-2 text-sm font-medium text-muted-foreground">{s.label}</div>
             </div>
@@ -90,25 +121,27 @@ function HomePage() {
 
       {/* Services grid */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-2xl">
+        <div className="reveal mb-12 max-w-2xl" data-reveal>
           <p className="text-sm font-semibold uppercase tracking-wider text-teal">Nos expertises</p>
           <h2 className="mt-2 font-heading text-3xl font-bold sm:text-4xl">
             Tout ce dont vous avez besoin pour réussir votre transformation digitale.
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
+          {services.map((s, i) => (
             <Link
               key={s.title}
               to={s.to}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-teal/40 hover:shadow-elegant"
+              data-reveal
+              style={{ animationDelay: `${i * 0.12}s` }}
+              className="reveal group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-teal/40 hover:shadow-elegant"
             >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-gradient text-deep">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-gradient text-deep transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
                 <s.icon size={22} />
               </div>
               <h3 className="mt-5 font-heading text-lg font-semibold">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-              <div className="mt-4 flex items-center gap-1 text-sm font-medium text-teal opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="mt-4 flex items-center gap-1 text-sm font-medium text-teal opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">
                 En savoir plus <ArrowRight size={14} />
               </div>
             </Link>
@@ -119,7 +152,7 @@ function HomePage() {
       {/* Value prop */}
       <section className="bg-muted/40">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div>
+          <div className="reveal-left" data-reveal>
             <p className="text-sm font-semibold uppercase tracking-wider text-teal">Pourquoi nous choisir</p>
             <h2 className="mt-2 font-heading text-3xl font-bold sm:text-4xl">
               Une équipe locale, un standard international.
@@ -136,9 +169,14 @@ function HomePage() {
               "Maintenance et support inclus dans chaque projet",
               "Tarification claire, sans surprise",
               "Formation et transfert de compétences",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4 shadow-card">
-                <CheckCircle2 className="mt-0.5 shrink-0 text-teal" size={20} />
+            ].map((item, i) => (
+              <li
+                key={item}
+                data-reveal
+                style={{ animationDelay: `${i * 0.08}s` }}
+                className="reveal-right group flex items-start gap-3 rounded-lg border border-border bg-card p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-teal/40"
+              >
+                <CheckCircle2 className="mt-0.5 shrink-0 text-teal transition-transform group-hover:scale-110" size={20} />
                 <span className="text-sm font-medium">{item}</span>
               </li>
             ))}
@@ -146,9 +184,12 @@ function HomePage() {
         </div>
       </section>
 
+      {/* CEO / Administrateur Général */}
+      <CeoSection />
+
       {/* Testimonial */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-border bg-card p-10 shadow-card md:p-14">
+        <div className="reveal-scale rounded-3xl border border-border bg-card p-10 shadow-card md:p-14" data-reveal>
           <Quote className="text-teal" size={36} />
           <blockquote className="mt-6 font-heading text-2xl leading-relaxed sm:text-3xl">
             "Well Done a transformé notre gestion scolaire. La plateforme est intuitive,
@@ -171,8 +212,13 @@ function HomePage() {
             Ils nous font confiance
           </p>
           <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-6">
-            {partners.map((p) => (
-              <div key={p} className="grid h-16 place-items-center rounded-lg border border-border bg-card text-sm font-semibold text-muted-foreground">
+            {partners.map((p, i) => (
+              <div
+                key={p}
+                data-reveal
+                style={{ animationDelay: `${i * 0.06}s` }}
+                className="reveal-scale grid h-16 place-items-center rounded-lg border border-border bg-card text-sm font-semibold text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-teal/50 hover:text-foreground"
+              >
                 {p}
               </div>
             ))}
@@ -182,19 +228,25 @@ function HomePage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-hero-gradient text-deep-foreground">
-        <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl">
-            Prêt à digitaliser votre activité ?
+        <div
+          className="animate-blob pointer-events-none absolute -top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full opacity-25 blur-3xl"
+          style={{ background: "var(--gradient-accent)" }}
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
+          <h2 className="reveal font-heading text-3xl font-bold sm:text-4xl" data-reveal>
+            Prêt à digitaliser votre <span className="shimmer-text">activité</span> ?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-deep-foreground/80">
+          <p className="reveal mx-auto mt-4 max-w-2xl text-lg text-deep-foreground/80" data-reveal>
             Parlons de votre projet. Nous vous proposons une approche claire,
             un devis transparent et une équipe dédiée.
           </p>
           <Link
             to="/contact"
-            className="mt-10 inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-8 py-4 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
+            className="reveal-scale group mt-10 inline-flex items-center gap-2 rounded-lg bg-accent-gradient px-8 py-4 font-semibold text-deep shadow-elegant transition-transform hover:-translate-y-0.5"
+            data-reveal
           >
-            Démarrer mon projet <ArrowRight size={18} />
+            Démarrer mon projet <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
